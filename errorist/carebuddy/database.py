@@ -9,7 +9,6 @@ USERS_TABLE = "users"
 CARETAKERS = "serviceproviders"
 
 
-# user(username, password)
 def authenticate(username, password):
     connector = connect(host=HOST, user=USER, password=PASSWORD, database=DATABASE)
     cursor = connector.cursor()
@@ -22,6 +21,7 @@ def authenticate(username, password):
         return fetched_user
 
 
+# format: user(id, name, username, password, gender, role)
 def create_user(user: tuple):
     connector = connect(host=HOST, user=USER, password=PASSWORD, database=DATABASE)
     cursor = connector.cursor()
@@ -43,14 +43,6 @@ def create_user(user: tuple):
 
     connector.commit()
     return True
-
-
-if create_user((2, "Om Mane", "ommane", "mypass123", 1, 1)):
-    print("Successfully created user")
-else:
-    print("User already exists!")
-
-print(authenticate("ommane", "mypass123"))
 
 
 def delete_account(username, password):
