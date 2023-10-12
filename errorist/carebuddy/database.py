@@ -57,9 +57,3 @@ def delete_account(username, password):
     cursor.execute("delete from " + CARETAKERS + " where username=%s", (username,))
     connector.commit()
     return True
-
-
-if delete_account("ommane", "mypass123"):
-    print("Successfully deleted user")
-else:
-    print("Wrong password")
